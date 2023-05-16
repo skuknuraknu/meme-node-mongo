@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Halaman Video</title>
+</head>
+<%- include('../layouts/navbar.ejs') %>
+
+<aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+   <div class="h-full px-3 py-4 overflow-y-auto bg-white shadow-xl">
+       <h1 class="bg-purple-700 text-white mb-5 px-4 py-2 rounded shadow-xl">Memesku</h1> 
+      <ul class="space-y-2 font-medium">
+         <% menu.forEach(function (menu_item) { %>
+            <li>
+            <a href="<%= menu_item.url_menu %>" class="<%= menu_item.class_menu %>">
+               <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+               <span class="ml-3"><%= menu_item.nama_menu %> <% menu_item %></span>
+            </a>
+         </li>
+         <% }) %>
+      </ul>
+   </div>
+</aside>
+
+<div class="p-4 sm:ml-64">
+   <div class="p-4 rounded-lg dark:border-gray-700">
+<!-- konten -->
+<div class="m-5">
+    <div class="grid grid-cols-3 gap-4">
+        <% videos.forEach(function (item) { %>                                 
+        <div class="rounded overflow-hidden shadow-lg">
+            <div class="ml-5">
+                <form class="inline" action="/video/<%= item._id %>/destroy" method="post">
+                    <button type="submit"><span class="bg-red-300 px-3 py-1">hapus</span></button>
+                </form>
+                <a href="/video/<%= item._id %>" class="mr-5 bg-yellow-300 px-3 py-1">edit</a>
+            </div>
+            <div class="w-full px-3 py-2 rounded">
+                <iframe class="w-full h-72 rounded" src="https://www.youtube.com/embed/<%=item.url_video%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            <div class="px-6 pt-2 pb-4">
+              <div class="font-bold mb-2"><%= item.nama_video %></div>
+              <span class="text-sm"> <%= item.durasi_video %></span>
+              <p class="text-gray-700 text-base">
+                <%= item.desc_video %>
+              </p>
+              <span class="text-sm font-semibold"><%= moment(item.createdAt).format("YYYY-MM-DD HH:mm") %></span>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">akun</span>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+   </div>
+</div>

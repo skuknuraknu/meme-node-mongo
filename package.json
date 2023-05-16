@@ -1,0 +1,26 @@
+{
+  "name": "uas-dbw",
+  "version": "1.0.0",
+  "description": "Tugas akhir mata kuliah database berbasis web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skuknuraknu/node-express-meme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skuknuraknu/node-express-meme/issues"
+  },
+  "homepage": "https://github.com/skuknuraknu/node-express-meme#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^7.1.1"
+  }
+}
